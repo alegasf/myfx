@@ -27,7 +27,7 @@ public class Person {
     }
 
     public void setFirstname(String firstname) {
-        this.firstname.set(firstname);
+        this.firstname = new SimpleStringProperty(firstname);
     }
 
     public String getLastname() {
@@ -39,7 +39,7 @@ public class Person {
     }
 
     public void setLastname(String lastname) {
-        this.lastname.set(lastname);
+        this.lastname = new SimpleStringProperty(lastname);
     }
 
     public String getEmail() {

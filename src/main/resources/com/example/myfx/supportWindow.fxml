@@ -12,7 +12,7 @@
       <ImageView fx:id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="159.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
 <!--            <Image url="@../../../../java/com/example/myfx/assets/logo.png" />-->
-            <Image url="https://psv4.userapi.com/c536236/u703277720/docs/d22/1c0b9302a110/logo.png?extra=D_W4QW8q5yFRnuisIbkuo1rZJ7nh3kY57ILUFnmF9S5YAPQVRaaazsQVIJPedfQ_2GAptYA4JBROEIx-lmIKvsy-rduKVgQHX7ANhqgcwONHlNsFQsSiUhGzPkeRLWXNMFJaPh6NSGnFfE6EXZpfk-HO" />
+            <Image url="https://github.com/alegasf/myfx/blob/master/src/main/java/com/example/myfx/assets/logo.png?raw=true" />
          </image>
       </ImageView>
       <Label layoutX="279.0" layoutY="46.0" prefWidth="263.0" style="-fx-border-color: fafafa;" text="Magic Coffee" textFill="#9e9e9e">

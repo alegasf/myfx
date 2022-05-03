@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -84,6 +85,9 @@ public class WarehouseWindowController {
         phoneNumColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("phoneNum"));
 
         tableView.setItems(getPeople());
+        tableView.setEditable(true);
+        firstnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
 //        assert employeesButton != null : "fx:id=\"employeesButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 
@@ -150,5 +154,15 @@ public class WarehouseWindowController {
         people.add(new Person("Очень большое имя", "Очень большая фамилия", "some-mail@gmail.com", "87777777777"));
 
         return people;
+    }
+
+    public void changeFirstnameCellEvent(TableColumn.CellEditEvent editedCell) {
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setFirstname(editedCell.getNewValue().toString());
+    }
+
+    public void changeLastnameCellEvent(TableColumn.CellEditEvent editedCell) {
+        Person personSelected = tableView.getSelectionModel().getSelectedItem();
+        personSelected.setLastname(editedCell.getNewValue().toString());
     }
 }

@@ -60,14 +60,14 @@
             <ImageView fx:id="logo" fitHeight="100.0" fitWidth="100.0" layoutX="165.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
 <!--                  <Image url="@../../../../java/com/example/myfx/assets/logo.png" />-->
-                  <Image url="https://psv4.userapi.com/c536236/u703277720/docs/d22/1c0b9302a110/logo.png?extra=D_W4QW8q5yFRnuisIbkuo1rZJ7nh3kY57ILUFnmF9S5YAPQVRaaazsQVIJPedfQ_2GAptYA4JBROEIx-lmIKvsy-rduKVgQHX7ANhqgcwONHlNsFQsSiUhGzPkeRLWXNMFJaPh6NSGnFfE6EXZpfk-HO" />
+                  <Image url="https://github.com/alegasf/myfx/blob/master/src/main/java/com/example/myfx/assets/logo.png?raw=true" />
                </image>
             </ImageView>
             <Button fx:id="tButton" layoutX="605.0" layoutY="49.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="TestButton" />
             <TableView fx:id="tableView" layoutX="155.0" layoutY="111.0" prefHeight="280.0" prefWidth="540.0">
                <columns>
-                  <TableColumn fx:id="firstnameColumn" prefWidth="120.0" text="Имя" />
-                  <TableColumn fx:id="lastnameColumn" prefWidth="138.0" text="Фамилия" />
+                  <TableColumn fx:id="firstnameColumn" onEditCommit="#changeFirstnameCellEvent" prefWidth="120.0" text="Имя" />
+                  <TableColumn fx:id="lastnameColumn" onEditCommit="#changeLastnameCellEvent" prefWidth="138.0" text="Фамилия" />
                 <TableColumn fx:id="emailColumn" prefWidth="190.0" text="Почта" />
                 <TableColumn fx:id="phoneNumColumn" prefWidth="90.0" text="Телефон" />
                </columns>
