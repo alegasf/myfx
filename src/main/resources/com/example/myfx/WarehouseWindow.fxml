@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: dbdbdb;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myfx.WarehouseWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: dbdbdb;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myfx.WarehouseWindowController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: fafafa;">
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: fafafa;">
          <children>
             <Label layoutX="265.0" layoutY="33.0" prefWidth="263.0" style="-fx-border-color: fafafa;" text="Magic Coffee" textFill="#9e9e9e">
                <font>
                   <Font size="38.0" />
                </font>
             </Label>
-            <AnchorPane prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: dbdbdb;">
+            <AnchorPane prefHeight="600.0" prefWidth="150.0" style="-fx-background-color: dbdbdb;">
                <children>
                   <Button fx:id="mainButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: fafafa; -fx-border-color: silver; -fx-border-radius: 5;" text="Главная">
                      <font>
@@ -45,7 +45,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="supportButton" layoutY="352.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: fdfdfd; -fx-border-color: silver; -fx-border-radius: 5;" text="Поддержка">
+                  <Button fx:id="supportButton" layoutY="552.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: fdfdfd; -fx-border-color: silver; -fx-border-radius: 5;" text="Поддержка">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -64,7 +64,7 @@
                </image>
             </ImageView>
             <Button fx:id="tButton" layoutX="605.0" layoutY="49.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="TestButton" />
-            <TableView fx:id="tableView" layoutX="155.0" layoutY="111.0" prefHeight="280.0" prefWidth="540.0">
+            <TableView fx:id="tableView" layoutX="200.0" layoutY="111.0" prefHeight="450.0" prefWidth="540.0">
                <columns>
                   <TableColumn fx:id="firstnameColumn" onEditCommit="#changeFirstnameCellEvent" prefWidth="120.0" text="Имя" />
                   <TableColumn fx:id="lastnameColumn" onEditCommit="#changeLastnameCellEvent" prefWidth="138.0" text="Фамилия" />

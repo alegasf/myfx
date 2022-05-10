@@ -4,11 +4,6 @@ package com.example.myfx;
  * @author Merkulov A
  */
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +11,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class EmployeesWindowController {
 
@@ -28,6 +29,15 @@ public class EmployeesWindowController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button editButton;
 
     @FXML
     private Button employeesButton;
@@ -51,10 +61,22 @@ public class EmployeesWindowController {
     private Button tButton;
 
     @FXML
-    private TableView<?> tableView;
+    private Button warehouseButton;
 
     @FXML
-    private Button warehouseButton;
+    private TableView<Users> tableView;
+
+    @FXML
+    private TableColumn<Users, String> firstnameColumn;
+
+    @FXML
+    private TableColumn<Users, String> lastnameColumn;
+
+    @FXML
+    private TableColumn<Users, String> typeColumn;
+
+    @FXML
+    private TableColumn<Users, Integer> idColumn;
 
     @FXML
     void initialize() {
@@ -71,7 +93,6 @@ public class EmployeesWindowController {
             System.out.println("You pressed \"Склад\" button");
             openNewWindow("warehouseWindow.fxml");
         });
-
 
 
         mainButton.setOnAction(event -> {
