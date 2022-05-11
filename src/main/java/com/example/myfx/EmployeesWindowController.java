@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -79,6 +80,18 @@ public class EmployeesWindowController {
     private TableColumn<Users, Integer> idColumn;
 
     @FXML
+    private TextField firstname_field;
+
+    @FXML
+    private TextField lastname_field;
+
+    @FXML
+    private TextField type_field;
+
+    @FXML
+    private TextField id_field;
+
+    @FXML
     void initialize() {
 //        assert employeesButton != null : "fx:id=\"employeesButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert historyButton != null : "fx:id=\"historyButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
@@ -88,6 +101,22 @@ public class EmployeesWindowController {
 //        assert warehouseButton != null : "fx:id=\"warehouseButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 
 //        logo = new ImageView("..\\..\\..\\..\\java\\com\\example\\myfx\\assets\\logo.png");
+
+        addButton.setOnAction(event -> {
+            System.out.println("You pressed \"Добавить\" button");
+            addUser();
+
+        });
+
+        editButton.setOnAction(event -> {
+            System.out.println("You pressed \"Изменить\" button");
+
+        });
+
+        deleteButton.setOnAction(event -> {
+            System.out.println("You pressed \"Удалить\" button");
+
+        });
 
         warehouseButton.setOnAction(event -> {
             System.out.println("You pressed \"Склад\" button");
@@ -136,5 +165,17 @@ public class EmployeesWindowController {
 
         window.setScene(tableViewScene);
         window.show();
+    }
+    private void addUser() {
+        mysqlconnect mysqlconnect = new mysqlconnect();
+
+        String firstname = firstname_field.getText();
+        String lastname = lastname_field.getText();
+        String type = type_field.getText();
+        String id = id_field.getText();
+
+        Users users2 = new Users(firstname, lastname, type, id);
+
+        mysqlconnect.addUser(users2);
     }
 }

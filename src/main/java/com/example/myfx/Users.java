@@ -4,21 +4,20 @@ package com.example.myfx;
  * @author Merkulov A
  */
 public class Users {
-    int id;
-    String firstname, lastname, type;
+    String firstname, lastname, type, id;
 
-    public Users(int id, String firstname, String lastname, String type) {
-        this.id = id;
+    public Users(String firstname, String lastname, String type, String id) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.type = type;
+        this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

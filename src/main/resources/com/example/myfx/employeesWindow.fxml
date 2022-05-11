@@ -46,7 +46,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="id_field" layoutX="35.0" layoutY="240.0" prefHeight="30.0" prefWidth="180.0" promptText="ID">
+                  <TextField fx:id="lastname_field" layoutX="35.0" layoutY="120.0" prefHeight="30.0" prefWidth="180.0" promptText="Фамилия">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="lastname_field" layoutX="35.0" layoutY="120.0" prefHeight="30.0" prefWidth="180.0" promptText="Фамилия">
+                  <TextField fx:id="id_field" layoutX="35.0" layoutY="240.0" prefHeight="30.0" prefWidth="180.0" promptText="ID">
                      <font>
                         <Font size="14.0" />
                      </font>
