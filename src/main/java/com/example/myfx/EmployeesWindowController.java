@@ -4,6 +4,7 @@ package com.example.myfx;
  * @author Merkulov A
  */
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +15,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -77,7 +83,7 @@ public class EmployeesWindowController {
     private TableColumn<Users, String> typeColumn;
 
     @FXML
-    private TableColumn<Users, Integer> idColumn;
+    private TableColumn<Users, String> idColumn;
 
     @FXML
     private TextField firstname_field;
@@ -91,8 +97,16 @@ public class EmployeesWindowController {
     @FXML
     private TextField id_field;
 
+    ObservableList<Users> list;
+
+    int index = -1;
+
+    Connection connection = null;
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
 //        assert employeesButton != null : "fx:id=\"employeesButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert historyButton != null : "fx:id=\"historyButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert mainButton != null : "fx:id=\"mainButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
@@ -102,10 +116,28 @@ public class EmployeesWindowController {
 
 //        logo = new ImageView("..\\..\\..\\..\\java\\com\\example\\myfx\\assets\\logo.png");
 
+        firstnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("firstname"));
+        lastnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("lastname"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("type"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("id"));
+
+        list = mysqlconnect.getDataUsers();
+        tableView.setItems(list);
+
         addButton.setOnAction(event -> {
             System.out.println("You pressed \"Добавить\" button");
-            addUser();
 
+            int i = 0;
+            try {
+                addUser();
+            } catch (Exception e) {
+                i = 1;
+            }
+            if (i == 1) {
+                    System.out.println("Неправильный ввод данных");
+            } else {
+                openNewWindow("addedUser.fxml");
+            }
         });
 
         editButton.setOnAction(event -> {
@@ -166,6 +198,7 @@ public class EmployeesWindowController {
         window.setScene(tableViewScene);
         window.show();
     }
+
     private void addUser() {
         mysqlconnect mysqlconnect = new mysqlconnect();
 
