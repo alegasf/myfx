@@ -4,10 +4,6 @@ package com.example.myfx;
  * @author Merkulov A
  */
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class MainWindowController {
 
@@ -77,7 +77,7 @@ public class MainWindowController {
         try {
             loader.load();
         } catch (IOException e) {
-            System.out.println("File not found"); //вероятно ошибка из за названия loader'a, постестить
+            e.printStackTrace();
         }
 
         Parent root = loader.getRoot();

@@ -107,7 +107,6 @@ public class EmployeesWindowController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-//        assert employeesButton != null : "fx:id=\"employeesButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert historyButton != null : "fx:id=\"historyButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert mainButton != null : "fx:id=\"mainButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
 //        assert statisticsButton != null : "fx:id=\"statisticsButton\" was not injected: check your FXML file 'employeesWindow.fxml'.";
@@ -127,16 +126,16 @@ public class EmployeesWindowController {
         addButton.setOnAction(event -> {
             System.out.println("You pressed \"Добавить\" button");
 
-            int i = 0;
+//            int i = 0;
             try {
                 addUser();
             } catch (Exception e) {
-                i = 1;
-            }
-            if (i == 1) {
+//                i = 1;
+//            }
+//            if (i == 1) {
                     System.out.println("Неправильный ввод данных");
-            } else {
-                openNewWindow("addedUser.fxml");
+//            } else {
+//                openNewWindow("addedUser.fxml");
             }
         });
 
@@ -176,13 +175,13 @@ public class EmployeesWindowController {
         try {
             loader.load();
         } catch (IOException e) {
-            System.out.println("File not found"); //вероятно ошибка из за названия loader'a, постестить
+            System.out.println("File not found Employees"); //вероятно ошибка из за названия loader'a, постестить
         }
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
-        stage.setTitle("Magic Coffee");
+        stage.setTitle("Сотрудники");
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
@@ -210,5 +209,7 @@ public class EmployeesWindowController {
         Users users2 = new Users(firstname, lastname, type, id);
 
         mysqlconnect.addUser(users2);
+
+        openNewWindow("addedUser.fxml");
     }
 }
