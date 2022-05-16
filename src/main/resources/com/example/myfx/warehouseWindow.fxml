@@ -20,7 +20,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="editButton" layoutX="35.0" layoutY="430.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: orange; -fx-border-radius: 5;" text="Изменить">
+                  <Button fx:id="editButton" layoutX="35.0" layoutY="430.0" mnemonicParsing="false" onAction="#Edit" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: orange; -fx-border-radius: 5;" text="Изменить">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
                </image>
             </ImageView>
             <Button fx:id="refreshButton" layoutX="712.0" layoutY="78.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="TestButton" />
-            <TableView fx:id="tableView" layoutX="280.0" layoutY="111.0" prefHeight="450.0" prefWidth="500.0">
+            <TableView fx:id="tableView" layoutX="280.0" layoutY="111.0" onMouseClicked="#selected" prefHeight="450.0" prefWidth="500.0">
                <columns>
                   <TableColumn fx:id="nameColumn" prefWidth="180.0" text="Наименование" />
                   <TableColumn fx:id="amountColumn" prefWidth="90.0" text="Кол-во" />

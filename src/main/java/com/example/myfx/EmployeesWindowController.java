@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -133,16 +134,16 @@ public class EmployeesWindowController {
 //                i = 1;
 //            }
 //            if (i == 1) {
-                    System.out.println("Неправильный ввод данных");
+                System.out.println("Неправильный ввод данных");
 //            } else {
 //                openNewWindow("addedUser.fxml");
             }
         });
 
-        editButton.setOnAction(event -> {
-            System.out.println("You pressed \"Изменить\" button");
-
-        });
+//        editButton.setOnAction(event -> {
+//            System.out.println("You pressed \"Изменить\" button");
+//
+//        });
 
         deleteButton.setOnAction(event -> {
             System.out.println("You pressed \"Удалить\" button");
@@ -180,6 +181,7 @@ public class EmployeesWindowController {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+//        stage.initStyle(StageStyle.UNDECORATED);  Создает окно без возможно его закрытия и пр. манипуляций
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
         stage.setTitle("Сотрудники");
         stage.setScene(new Scene(root));
@@ -210,6 +212,37 @@ public class EmployeesWindowController {
 
         mysqlconnect.addUser(users2);
 
-        openNewWindow("addedUser.fxml");
+//        openNewWindow("addedUser.fxml");
+    }
+
+    @FXML
+    public void selected(MouseEvent event) {
+        index = tableView.getSelectionModel().getSelectedIndex();
+        if (index <= -1) {
+            return;
+        }
+        id_field.setText(idColumn.getCellData(index).toString());
+        firstname_field.setText(firstnameColumn.getCellData(index).toString());
+        lastname_field.setText(lastnameColumn.getCellData(index).toString());
+        type_field.setText(typeColumn.getCellData(index).toString());
+    }
+
+    public void Edit() {
+        try {
+            connection = mysqlconnect.dbConnection2;
+
+            String id_value = id_field.getText();
+            String firstname_value = firstname_field.getText();
+            String lastname_value = lastname_field.getText();
+            String type_value = type_field.getText();
+
+            String sql = "update users2 set idusers2= '" + id_value + "',firstname= '" + firstname_value +
+                    "',lastname= '" + lastname_value + "',type= '" + type_value + "' where idusers2='" + id_value + "' ";
+            ps = connection.prepareStatement(sql);
+            ps.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

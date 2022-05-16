@@ -37,7 +37,7 @@ public class mysqlconnect2 extends Configs3 {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Неверный ввод данных");
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             System.out.println("Class Not Found Exception");
         }

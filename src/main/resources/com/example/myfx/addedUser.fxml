@@ -9,7 +9,7 @@
    <children>
       <Button fx:id="okButton" cancelButton="true" layoutX="55.0" layoutY="35.0" mnemonicParsing="false" onAction="#closeButtonAction" prefWidth="100.0" text="Ok" />
 <!--      <Button fx:id="okButton" layoutX="89.0" layoutY="35.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Ok" />-->
-      <Label layoutX="6.0" layoutY="4.0" text="Сотрудник успешно добавлен!">
+      <Label fx:id="label" layoutX="6.0" layoutY="4.0" text="Сотрудник успешно добавлен!">
          <font>
             <Font size="14.0" />
          </font>

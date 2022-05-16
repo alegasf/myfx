@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -125,7 +126,7 @@ public class WarehouseWindowController {
 //                i = 1;
 //            }
 //            if (i == 1) {
-                System.out.println("Неправильный ввод данных");
+                e.printStackTrace();
 //            } else {
 //                openNewWindow("addedUser.fxml");
             }
@@ -187,6 +188,18 @@ public class WarehouseWindowController {
         window.show();
     }
 
+    @FXML
+    public void selected(MouseEvent event) {
+        index = tableView.getSelectionModel().getSelectedIndex();
+        if (index <= -1) {
+            return;
+        }
+        name_field.setText(nameColumn.getCellData(index).toString());
+        amount_field.setText(amountColumn.getCellData(index).toString());
+        type_field.setText(typeColumn.getCellData(index).toString());
+        cost_field.setText(costColumn.getCellData(index).toString());
+    }
+
     private void addUser() {
         mysqlconnect2 mysqlconnect2 = new mysqlconnect2();
 
@@ -199,6 +212,25 @@ public class WarehouseWindowController {
 
         mysqlconnect2.addUser(warehouse);
 
-        openNewWindow("addedUser.fxml");
+//        openNewWindow("addedUser.fxml");
+    }
+
+    public void Edit() {
+        try {
+            connection = mysqlconnect2.dbConnection3;
+
+            String name_value = name_field.getText();
+            String amount_value = amount_field.getText();
+            String type_value = type_field.getText();
+            String cost_value = cost_field.getText();
+
+            String sql = "update warehouse set name= '" + name_value + "',amount= '" + amount_value +
+                    "',type= '" + type_value + "',cost= '" + cost_value + "' where name='" + name_value + "' ";
+            ps = connection.prepareStatement(sql);
+            ps.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
