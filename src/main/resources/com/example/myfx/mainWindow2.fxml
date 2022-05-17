@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: dbdbdb;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myfx.MainWindowController2">
@@ -57,16 +58,37 @@
                         <Image url="https://github.com/alegasf/myfx/blob/master/src/main/java/com/example/myfx/assets/logo.png?raw=true" />
                     </image>
                 </ImageView>
-                  <Button fx:id="mainButton" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: aaaaaa; -fx-border-color: silver; -fx-border-radius: 10; -fx-background-radius: 10;" text="Главная">
+                  <Button fx:id="mainButton" layoutX="606.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="175.0" style="-fx-background-color: dbddda; -fx-border-color: silver; -fx-border-radius: 0; -fx-background-radius: 0;" text="Главная">
                       <font>
                           <Font size="21.0" />
                       </font>
                   </Button>
             <ScrollPane fx:id="scrollPane" layoutX="281.0" layoutY="70.0" prefHeight="500.0" prefWidth="500.0">
               <content>
-                <AnchorPane fx:id="mainPane" layoutX="281.0" layoutY="70.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0" />
+                <AnchorPane fx:id="mainPane" layoutX="281.0" layoutY="70.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
+                     <children>
+                        <HBox layoutX="7.0" layoutY="14.0" prefHeight="100.0" prefWidth="450.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" text="Латте">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
               </content>
             </ScrollPane>
+            <Button fx:id="employeesButton" layoutX="456.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="150.0" style="-fx-background-color: fafafa; -fx-border-color: silver; -fx-border-radius: 0;" text="Сотрудники">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="warehouseButton" layoutX="306.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="150.0" style="-fx-background-color: fafafa; -fx-border-color: silver; -fx-border-radius: 0;" text="Склад">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             </children></AnchorPane>
     </children>
 </AnchorPane>

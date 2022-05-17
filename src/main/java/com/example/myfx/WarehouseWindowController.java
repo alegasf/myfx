@@ -108,13 +108,7 @@ public class WarehouseWindowController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("name"));
-        amountColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("amount"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("type"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("cost"));
-
-        list = mysqlconnect2.getDataWarehouse();
-        tableView.setItems(list);
+        Refresh();
 
         addButton.setOnAction(event -> {
             System.out.println("You pressed \"Добавить\" button");
@@ -157,7 +151,7 @@ public class WarehouseWindowController {
     }
 
     public void openNewWindow(String window) {
-        mainButton.getScene().getWindow();
+        mainButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
@@ -173,7 +167,7 @@ public class WarehouseWindowController {
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
         stage.setTitle("Склад");
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
     }
 
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
@@ -212,6 +206,12 @@ public class WarehouseWindowController {
 
         mysqlconnect2.addUser(warehouse);
 
+        try {
+            Refresh();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 //        openNewWindow("addedUser.fxml");
     }
 
@@ -229,8 +229,34 @@ public class WarehouseWindowController {
             ps = connection.prepareStatement(sql);
             ps.execute();
 
+            Refresh();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void Delete() {
+        connection = mysqlconnect2.dbConnection3;
+
+        String sql = "delete from warehouse where name = ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1 , name_field.getText());
+            ps.execute();
+
+            Refresh();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Refresh() throws SQLException, ClassNotFoundException {
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("name"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("amount"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("type"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<Warehouse, String>("cost"));
+
+        list = mysqlconnect2.getDataWarehouse();
+        tableView.setItems(list);
     }
 }

@@ -15,7 +15,7 @@
          <children>
             <AnchorPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: dbdbdb;">
                <children>
-                  <Button fx:id="deleteButton" layoutX="35.0" layoutY="500.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: red; -fx-border-radius: 5;" text="Удалить">
+                  <Button fx:id="deleteButton" layoutX="35.0" layoutY="500.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: red; -fx-border-radius: 5;" text="Удалить">
                      <font>
                         <Font size="18.0" />
                      </font>

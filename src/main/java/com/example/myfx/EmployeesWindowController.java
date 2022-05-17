@@ -23,10 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -116,13 +113,7 @@ public class EmployeesWindowController {
 
 //        logo = new ImageView("..\\..\\..\\..\\java\\com\\example\\myfx\\assets\\logo.png");
 
-        firstnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("firstname"));
-        lastnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("lastname"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("type"));
-        idColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("id"));
-
-        list = mysqlconnect.getDataUsers();
-        tableView.setItems(list);
+        Refresh();
 
         addButton.setOnAction(event -> {
             System.out.println("You pressed \"Добавить\" button");
@@ -168,7 +159,7 @@ public class EmployeesWindowController {
     }
 
     public void openNewWindow(String window) {
-        mainButton.getScene().getWindow();
+        mainButton.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
@@ -185,7 +176,7 @@ public class EmployeesWindowController {
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
         stage.setTitle("Сотрудники");
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
     }
 
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
@@ -211,6 +202,12 @@ public class EmployeesWindowController {
         Users users2 = new Users(firstname, lastname, type, id);
 
         mysqlconnect.addUser(users2);
+
+        try {
+            Refresh();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
 //        openNewWindow("addedUser.fxml");
     }
@@ -241,8 +238,34 @@ public class EmployeesWindowController {
             ps = connection.prepareStatement(sql);
             ps.execute();
 
+            Refresh();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void Delete() {
+        connection = mysqlconnect.dbConnection2;
+
+        String sql = "delete from users2 where idusers2 = ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1 , id_field.getText());
+            ps.execute();
+
+            Refresh();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Refresh() throws SQLException, ClassNotFoundException {
+        firstnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("firstname"));
+        lastnameColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("lastname"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("type"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Users, String>("id"));
+
+        list = mysqlconnect.getDataUsers();
+        tableView.setItems(list);
     }
 }
