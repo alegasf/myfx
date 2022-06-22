@@ -149,7 +149,7 @@ public class EmployeesWindowController {
 
         mainButton.setOnAction(event -> {
             System.out.println("You pressed \"Главная\" button");
-            openNewWindow("mainWindow.fxml");
+            openNewWindow("mainWindow2.fxml");
         });
 
         supportButton.setOnAction(event -> {
@@ -167,14 +167,13 @@ public class EmployeesWindowController {
         try {
             loader.load();
         } catch (IOException e) {
-            System.out.println("File not found Employees"); //вероятно ошибка из за названия loader'a, постестить
+            System.out.println("File not found Employees");
         }
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
 //        stage.initStyle(StageStyle.UNDECORATED);  Создает окно без возможно его закрытия и пр. манипуляций
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
-        stage.setTitle("Сотрудники");
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -208,8 +207,6 @@ public class EmployeesWindowController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-//        openNewWindow("addedUser.fxml");
     }
 
     @FXML
@@ -250,7 +247,7 @@ public class EmployeesWindowController {
         String sql = "delete from users2 where idusers2 = ?";
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1 , id_field.getText());
+            ps.setString(1, id_field.getText());
             ps.execute();
 
             Refresh();

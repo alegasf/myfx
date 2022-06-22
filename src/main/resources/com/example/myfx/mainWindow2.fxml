@@ -19,10 +19,10 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="500.0" prefWidth="270.0" style="-fx-background-color: dbdbdb;">
                     <columns>
-                      <TableColumn editable="false" prefWidth="120.0" text="Наименование" />
-                      <TableColumn prefWidth="50.0" text="Кол-во" />
-                        <TableColumn prefWidth="50.0" text="Цена" />
-                        <TableColumn prefWidth="50.0" text="Итого" />
+                      <TableColumn fx:id="nameColumn" editable="false" onEditCommit="#changeNameCellEvent" prefWidth="120.0" text="Наименование" />
+                      <TableColumn fx:id="amountColumn" onEditCommit="#changeAmountCellEvent" prefWidth="50.0" text="Кол-во" />
+                        <TableColumn fx:id="priceColumn" onEditCommit="#changePriceCellEvent" prefWidth="50.0" text="Цена" />
+                        <TableColumn fx:id="sumColumn" onEditCommit="#changeSumCellEvent" prefWidth="50.0" text="Итого" />
                     </columns>
                   </TableView>
                   <Button fx:id="payButton" layoutX="160.0" layoutY="555.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: green; -fx-border-radius: 9; -fx-background-radius: 10;" text="Оплатить" textFill="WHITE">
@@ -35,7 +35,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sum2Button" layoutX="75.0" layoutY="500.0" prefHeight="30.0" prefWidth="50.0" text="19999">
+                  <Label fx:id="sum2Button" layoutX="75.0" layoutY="500.0" prefHeight="30.0" prefWidth="50.0" text=" ">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -67,11 +67,97 @@
               <content>
                 <AnchorPane fx:id="mainPane" layoutX="281.0" layoutY="70.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
                      <children>
-                        <HBox layoutX="7.0" layoutY="14.0" prefHeight="100.0" prefWidth="450.0">
+                        <HBox layoutX="5.0" layoutY="425.0" prefHeight="100.0" prefWidth="475.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" text="Латте">
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Кон Панна">
                                  <font>
-                                    <Font size="22.0" />
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Фредо">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Латте Макиато">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="5.0" layoutY="5.0" prefHeight="100.0" prefWidth="475.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Латте">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Эспрессо">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Мокко">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="5.0" layoutY="110.0" prefHeight="100.0" prefWidth="475.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Капучино">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Американо">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Лунго">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="5.0" layoutY="215.0" prefHeight="100.0" prefWidth="475.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Доппио">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Коррето">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Бичерин">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="5.0" layoutY="320.0" prefHeight="100.0" prefWidth="475.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Гляссе">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Медовый раф">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="160.0" text="Бревэ">
+                                 <font>
+                                    <Font size="20.0" />
                                  </font>
                               </Button>
                            </children>

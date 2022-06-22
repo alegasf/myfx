@@ -1,11 +1,5 @@
 package com.example.myfx;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import com.example.myfx.animations.ButtonOnClick;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +10,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class HelloController {
 
@@ -75,7 +75,7 @@ public class HelloController {
 
         if (counter >= 1) {
             System.out.println("Log In successfully");
-            openNewWindow("mainWindow.fxml");
+            openNewWindow("mainWindow2.fxml");
         } else {
             System.out.println("Log In failure");
             ButtonOnClick loginUserAnimation = new ButtonOnClick(login_field);
@@ -83,9 +83,8 @@ public class HelloController {
             loginUserAnimation.playAnimation();
             passwordUserAnimation.playAnimation();
         }
-
-        //TODO: user login method
     }
+
     public void openNewWindow(String window) {
         startSignUpButton.getScene().getWindow().hide();
 

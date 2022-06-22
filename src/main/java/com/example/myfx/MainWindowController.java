@@ -44,30 +44,20 @@ public class MainWindowController {
 
     @FXML
     void initialize() {
-//        mainButton.setOnAction(event -> System.out.println("You pressed \"Главная\" button"));
-//        historyButton.setOnAction(event -> System.out.println("You pressed \"Историй\" button"));            TODO: History button
-//        statisticsButton.setOnAction(event -> System.out.println("You pressed \"Статистика\" button"));      TODO: Statistics button
-//        warehouseButton.setOnAction(event -> System.out.println("You pressed \"Склад\" button"));
-
         warehouseButton.setOnAction(event -> {
             System.out.println("You pressed \"Склад\" button");
             openNewWindow("warehouseWindow.fxml");
         });
-
-//        employeesButton.setOnAction(event -> System.out.println("You pressed \"Сотрудники\" button"));
-
         employeesButton.setOnAction(event -> {
             System.out.println("You pressed \"Сотрудники\" button");
             openNewWindow("employeesWindow.fxml");
         });
-
-//        supportButton.setOnAction(event -> System.out.println("You pressed \"Support\" button"));
-
         supportButton.setOnAction(event -> {
             System.out.println("You pressed \"Support\" button");
             openNewWindow("supportWindow.fxml");
         });
     }
+
     public void openNewWindow(String window) {
         mainButton.getScene().getWindow();
 

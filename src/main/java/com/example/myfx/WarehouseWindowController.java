@@ -125,13 +125,6 @@ public class WarehouseWindowController {
 //                openNewWindow("addedUser.fxml");
             }
         });
-
-
-//        tableView.setItems(getPeople());
-//        tableView.setEditable(true);
-//        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        amountColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-
         employeesButton.setOnAction(event -> {
             System.out.println("You pressed \"Сотрудники\" button");
             openNewWindow("employeesWindow.fxml");
@@ -139,7 +132,7 @@ public class WarehouseWindowController {
 
         mainButton.setOnAction(event -> {
             System.out.println("You pressed \"Главная\" button");
-            openNewWindow("mainWindow.fxml");
+            openNewWindow("mainWindow2.fxml");
         });
 
         supportButton.setOnAction(event -> {
@@ -147,7 +140,6 @@ public class WarehouseWindowController {
             openNewWindow("supportWindow.fxml");
         });
 
-//        logo = new ImageView("..\\..\\..\\..\\java\\com\\example\\myfx\\assets\\logo.png");
     }
 
     public void openNewWindow(String window) {
@@ -159,13 +151,13 @@ public class WarehouseWindowController {
         try {
             loader.load();
         } catch (IOException e) {
-            System.out.println("File not found1"); //вероятно ошибка из за названия loader'a, постестить
+            System.out.println("File not found1");
         }
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.getIcons().add(new Image("file:src\\main\\java\\com\\example\\myfx\\assets\\logo.png"));
-        stage.setTitle("Склад");
+        stage.setTitle("Сотрудники");
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -241,7 +233,7 @@ public class WarehouseWindowController {
         String sql = "delete from warehouse where name = ?";
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1 , name_field.getText());
+//            ps.setString(1 , name_field.getText());
             ps.execute();
 
             Refresh();

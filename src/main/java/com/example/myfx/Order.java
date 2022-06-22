@@ -5,17 +5,17 @@ import javafx.beans.property.SimpleStringProperty;
 /**
  * @author Merkulov A
  */
-public class Warehouse {
+public class Order {
     private SimpleStringProperty name;
     private SimpleStringProperty amount;
-    private SimpleStringProperty type;
-    private SimpleStringProperty cost;
+    private SimpleStringProperty price;
+    private SimpleStringProperty sum;
 
-    public Warehouse(String name, String amount, String type, String cost) {
+    public Order(String name, String amount, String price, String sum) {
         this.name = new SimpleStringProperty(name);
         this.amount = new SimpleStringProperty(amount);
-        this.type = new SimpleStringProperty(type);
-        this.cost = new SimpleStringProperty(cost);
+        this.price = new SimpleStringProperty(price);
+        this.sum = new SimpleStringProperty(sum);
     }
 
     public String getName() {
@@ -42,28 +42,27 @@ public class Warehouse {
         this.amount = new SimpleStringProperty(amount);
     }
 
-    public String getType() {
-        return type.get();
+    public String getPrice() {
+        return price.get();
     }
 
-    public SimpleStringProperty typeProperty() {
-        return type;
+    public SimpleStringProperty priceProperty() {
+        return price;
     }
 
-    public void setType(String type) {
-        this.type.set(type);
+    public void setPrice(String price) {
+        this.price.set(price);
     }
 
-    public String getCost() {
-        return cost.get();
+    public String getSum() {
+        return sum.get();
     }
 
-    public SimpleStringProperty costProperty() {
-        return cost;
+    public SimpleStringProperty sumProperty() {
+        return sum;
     }
 
-    public void setCost(String cost) {
-        this.cost.set(cost);
+    public void setSum(String sum) {
+        this.sum.set(sum);
     }
-
 }

@@ -4,8 +4,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -52,19 +50,12 @@
                   </TextField>
                </children>
             </AnchorPane>
-            <ImageView fx:id="logo" fitHeight="50.0" fitWidth="50.0" layoutX="650.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-<!--                  <Image url="@../../../../java/com/example/myfx/assets/logo.png" />-->
-                  <Image url="https://github.com/alegasf/myfx/blob/master/src/main/java/com/example/myfx/assets/logo.png?raw=true" />
-               </image>
-            </ImageView>
-            <Button fx:id="refreshButton" layoutX="712.0" layoutY="78.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="TestButton" />
-            <TableView fx:id="tableView" layoutX="280.0" layoutY="111.0" onMouseClicked="#selected" prefHeight="450.0" prefWidth="500.0">
+            <TableView fx:id="tableView" layoutX="280.0" layoutY="81.0" onMouseClicked="#selected" prefHeight="490.0" prefWidth="500.0">
                <columns>
                   <TableColumn fx:id="nameColumn" prefWidth="180.0" text="Наименование" />
                   <TableColumn fx:id="amountColumn" prefWidth="90.0" text="Кол-во" />
                 <TableColumn fx:id="typeColumn" prefWidth="109.0" text="Ед. изм." />
-                <TableColumn fx:id="costColumn" prefWidth="120.0" text="Стоимость" />
+                <TableColumn fx:id="costColumn" prefWidth="120.0" text="Код-товара" />
                </columns>
             </TableView>
          </children>
