@@ -62,5 +62,4 @@ public class DatabaseHandler extends Configs {
 
         return resultSet;
     }
-    //TODO: Доп.методы для БД
 }
