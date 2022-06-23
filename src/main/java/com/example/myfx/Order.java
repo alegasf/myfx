@@ -9,13 +9,11 @@ public class Order {
     private SimpleStringProperty name;
     private SimpleStringProperty amount;
     private SimpleStringProperty price;
-    private SimpleStringProperty sum;
 
-    public Order(String name, String amount, String price, String sum) {
+    public Order(String name, String amount, String price) {
         this.name = new SimpleStringProperty(name);
         this.amount = new SimpleStringProperty(amount);
         this.price = new SimpleStringProperty(price);
-        this.sum = new SimpleStringProperty(sum);
     }
 
     public String getName() {
@@ -52,17 +50,5 @@ public class Order {
 
     public void setPrice(String price) {
         this.price.set(price);
-    }
-
-    public String getSum() {
-        return sum.get();
-    }
-
-    public SimpleStringProperty sumProperty() {
-        return sum;
-    }
-
-    public void setSum(String sum) {
-        this.sum.set(sum);
     }
 }
